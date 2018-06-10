@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax_demo1</title>
+</head>
+<body>
+	<form>
+		input &nbsp;&nbsp;<input type="text" width="100px" onkeyup="show(this.value)">
+	</form><br>	
+	<div id="txthint"><b></b></div>
+</body>
+<script type="text/javascript">
+	var xhttp
+	function show (str) {
+		if(str == '') {
+			document.getElementById("txthint").innerHTML = ""
+		}
+
+		xhttp = GetXmlHttpRequestObject()
+
+		if(xhttp == null) {
+			alert("Browser is does not support XMLHttpRequest Object ")
+		}
+
+		xhttp.onreadystatechange = stateChange
+
+		xhttp.open("POST","ajax_demo1.php",true)
+
+		xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded')
+
+		xhttp.send("q=" + str + "&sid=" + Math.random())
+	}
+
+	function GetXmlHttpRequestObject() {
+		var xhttp = null	
+		try {
+			xhttp = new XMLHttpRequest()
+		}catch(e) {
+			try {
+				xhttp = new ActiveXObject('Msxml2.XMLHTTP')
+			}catch(e) {
+				xhttp = new ActiveXObject('Microsoft.XMLHTTP')
+			}	
+		}
+		return xhttp
+	}
+
+	function stateChange () {
+		if(xhttp.readyState == 4 && xhttp.status == 200) {
+			document.getElementById('txthint').innerHTML = xhttp.responseText
+		}	
+	}
+</script>
+</html>
