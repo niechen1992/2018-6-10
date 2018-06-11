@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo1</title>
+	<style>
+		* {
+			padding: 0px;
+			margin: 0px;
+			font-size:12px;
+		}
+
+		body>div {
+			margin:10px auto;
+			width: 100px
+		}
+
+		body>div input {
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<label>
+			<input type="checkbox">记录登录信息
+		</label>
+	</div>	
+</body>
+<script type="text/javascript">
+	window.onload = function () {
+		var lab = document.getElementsByTagName('label')[0]
+		lab.onmouseover = hint
+		lab.onmouseout = hide 
+	}
+	// var divmain
+	function hint () {
+		div1 = document.createElement('div')
+		div1.innerHTML = '请注意不要在网吧记录信息'
+		div1.style.cssText = 'margin-top:10px;padding:10px;width:200px;height:20px;background:rgb(211,231,198);border:2px solid #f90'
+		var div = document.getElementsByTagName('div')[0]
+		div.appendChild(div1)
+
+		// var middle = function (){
+		// 	return div1
+		// }
+
+		// divmain = middle 
+	}
+
+	function hide () {
+		// var result = divmain()
+		var div2  = document.getElementsByTagName('div')[0]
+		div2.removeChild(div1)
+	}
+
+</script>
+</html>
