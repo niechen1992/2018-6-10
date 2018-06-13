@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	    .box {
+	      width: 200px;
+	      height: 200px;
+	     border: 1px solid #000;
+	     padding: 50px;
+	     box-sizing: border-box;
+	    }
+	    .child {
+	     width: 100px;
+	     height: 50%;
+	     padding-bottom: 50%;
+	     border: 1px solid #000;
+	    }
+    </style>
+</head>
+<body>
+	<div class="box">
+        <div class="child"></div>
+    </div>	
+</body>
+</html>
+//其实，除了height以外垂直方向上的margin-top（bottom）或者padding-top（bottom）的百分比取值都是相对于父元素的宽度，本例中也就是200-2(1 + 50)px*50%=49px。 
+这样表示也不是很好，更准确的说是相对于父元素内容的宽度(不包括padding!)
+
