@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>rectangle</title>
+	<style>
+		* {
+			margin:0;
+			padding:0;
+		}
+
+		div.first {
+			margin:0 auto;
+			width:500px;
+			height: 500px;
+			position:relative;
+		}
+
+		div.second {
+			margin:0 auto;
+			width:200px;
+			height: 200px;
+			background-color: black;
+		}
+
+		ul {
+			position: relative;
+			margin:0 auto;
+			/*width: 200px;*/
+			display: table;		
+			text-align: center;
+		}
+
+		li {
+			float:left;
+			list-style: none;
+			margin-left: 2px;
+			margin-right: 2px;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="first">
+		<ul>
+			<li><button onclick="width()">width</button></li>
+			<li><button onclick="height()">height</button></li>
+			<li><button onclick="color()">color</button></li>
+			<li><button onclick="hidde()">hidden</button></li>
+			<li><button onclick="reset()">reset</button></li>
+			<div style="clear:both;"></div>
+		</ul>	
+		<div style="background-color: white;height:20px;width:200px;"></div>
+		<div class="second"></div>
+	</div>	
+</body>
+<script type="text/javascript">
+
+	function width () {
+		document.getElementsByClassName("second")[0].style.width = "300px"
+	}	
+
+	function height () {
+		document.getElementsByClassName("second")[0].style.height = "300px"
+	}
+
+	function color () {
+		// document.getElementsByName("second")[0].style.background-color = "rgb(255,0,0)"
+		document.getElementsByClassName("second")[0].style.backgroundColor = 'rgb(255,0,0)'
+	}
+
+	function hidde () {
+		document.getElementsByClassName("second")[0].style.display = "none"
+	}
+
+	function reset () {
+		document.getElementsByClassName("second")[0].style.width = "200px"
+		document.getElementsByClassName("second")[0].style.height = "200px"
+		document.getElementsByClassName("second")[0].style.backgroundColor = "#000000"
+	}
+
+</script>
+</html>
