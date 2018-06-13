@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>param</title>
+	<style>
+		* {
+			padding:0px;
+			margin:0px;
+			font-size: 14px;
+		}
+
+		body>div {
+			margin: 0 auto;
+			width:500px;
+			height:500px;
+			display: flex;
+			justify-content: center;
+			/*align-items: center;*/
+		}
+
+		div>form {
+			/*margin:0 auto;*/
+			/*margin-top: 12px;*/
+		}
+
+		input.first {
+			margin-top:12px;
+			width: 167px;
+			height: 22px;
+		}
+
+		input.second {
+			margin-top:12px;
+			width: 40px;
+			height: 22px;
+			cursor: pointer;
+		}
+		
+		form>div {
+			display: flex;
+			justify-content: center;
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		<form>
+			<input type="text" class="first"><br>
+			<input type="text" class="first"><br>
+			<div><input type="button" value="传参" class="second" onclick="show()"></div>
+		</form>
+	</div>		
+</body>
+
+<script type="text/javascript">
+	window.onload = function () {
+		document.getElementsByClassName("first")[0].value = "北京市"		
+		document.getElementsByClassName("first")[1].value = "朝阳区"		
+	}
+		
+	function show () {
+		var a = document.getElementsByClassName("first")[0].value   
+		var b = document.getElementsByClassName("first")[1].value    
+
+		alert(a);
+		alert(b);
+	}
+</script>
+</html>
