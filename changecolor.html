@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ChangeColor</title>
+	<style>
+		* {
+			margin:0;
+			padding:0;
+			font-size: 12px;
+		}
+
+		/*body {
+			background-color: rgb(255,221,221);
+		}
+*/
+		div.first {
+			margin:0 auto;
+			width:500px;
+			position: relative;
+		}
+
+		ul {
+			padding-top: 10px;
+			position: relative;
+			display: table;
+		}
+
+		li.first {
+			margin-right:14px;
+			float: left;
+			list-style: none
+		}
+
+		li.first:hover {
+			cursor:pointer;
+		}
+		
+		li.second {
+			float: left;
+			list-style: none;
+			border-right: 1px solid #fff;	
+		}
+
+		a {
+			cursor: pointer;
+			text-decoration: none;
+			color:#ffffff;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		li.second>div {
+			width:82px;
+			/*background-color:#ff0000;*/
+			height: 25px;
+			text-align: center;	
+			vertical-align:middle;						
+			display:table-cell;  
+		}
+
+		li.second p {
+			line-height: 12px;
+		}
+	</style>
+</head>
+<body>
+	<div class="first">
+		<ul>
+			<li class="first" onclick="change1(this)"><div style="width:14px;height:14px;background-color:red;"></div></li>
+			<li class="first" onclick="change2(this)"><div style="width:14px;height:14px;background-color:green;"></div></li>
+			<li class="first" onclick="change3(this)"><div style="width:14px;height:14px;background-color:black;"></div></li>
+		</ul>
+		<ul>
+			<li class="second"><div><p><a href="#">新闻</a></p></div></li>
+			<li class="second"><div><p><a href="#">娱乐</a></p></div></li>
+			<li class="second"><div><p><a href="#">体育</a></p></div></li>
+			<li class="second"><div><p><a href="#">电影</a></p></div></li>
+			<li class="second"><div><p><a href="#">音乐</a></p></div></li>
+			<li class="second"><div><p><a href="#">旅游</a></p></div></li>
+		</ul>	
+		<div style="clear:both;"></div>
+	</div>	
+</body>
+<script type="text/javascript">
+	window.onload = function () {
+		var f1  = document.getElementsByClassName("first")[1].childNodes[0]
+		f1.style.cssText += "display:flex;justify-content:center;align-items:center;"
+		var s1 = document.createElement("div")
+		s1.style.cssText = "width:6px;height:6px;background-color: #fff;"
+		f1.appendChild(s1)
+		document.body.style.backgroundColor = "rgb(255,221,221)"
+		var second = document.getElementsByClassName("second")
+		for(var i = 0; i < second.length; ++i) {
+			second[i].firstChild.style.cssText += "background-color:#ff0000"
+		}
+	}
+
+	function change1 (object) {
+		package(object,1)
+	}
+
+	function change2 (object) {
+		package(object,2)
+	}
+
+	function change3 (object) {
+		package(object,3)
+	}
+
+	function package (o,num) {
+		var first = o.childNodes[0]
+		var boo = first.hasChildNodes()	
+		if(!boo) {
+			first.style.cssText += "display:flex;justify-content:center;align-items:center"
+			var s1 = document.createElement("div")
+			s1.style.cssText = "width:6px;height:6px;background-color:#fff;"
+			first.appendChild(s1)
+		}
+
+		if(num == 1) {
+			var f2 = document.getElementsByClassName("first")[2]
+			var f3 = document.getElementsByClassName("first")[3]
+		}else if(num == 2) {
+			var f2 = document.getElementsByClassName("first")[1]
+			var f3 = document.getElementsByClassName("first")[3]
+		}else {
+			var f2 = document.getElementsByClassName("first")[1]
+			var f3 = document.getElementsByClassName("first")[2]
+		}
+
+		var s2 = f2.childNodes[0]
+		var s3 = f3.childNodes[0]
+		var boo1 = s2.hasChildNodes()
+		var boo2 = s3.hasChildNodes()
+		if(num == 1) {
+			if(boo1) {
+				s2.style.cssText = "width:14px;height:14px;background-color:green;"
+				s2.removeChild(s2.firstChild)
+			}	
+			if(boo2) {
+				s3.style.cssText = "width:14px;height:14px;background-color:black;"
+				s3.removeChild(s3.firstChild)
+			}
+
+			document.body.style.backgroundColor = "rgb(255,221,221)"
+
+			var second = document.getElementsByClassName("second")
+
+			for(var i = 0; i < second.length; ++i) {
+				second[i].firstChild.style.cssText += "background-color:#ff0000"	
+			}
+		}
+
+		if(num == 2) {
+			if(boo1) {
+				s2.style.cssText = "width:14px;height:14px;background-color:red;"
+				s2.removeChild(s2.firstChild)
+			}	
+			if(boo2) {
+				s3.style.cssText = "width:14px;height:14px;background-color:black;"
+				s3.removeChild(s3.firstChild)
+			}
+
+			document.body.style.backgroundColor = "rgb(163,197,168)"
+
+			var second = document.getElementsByClassName("second")
+
+			for(var i = 0; i < second.length; ++i) {
+				second[i].firstChild.style.cssText += "background-color:rgb(0,128,0)"	
+			}
+		}
+
+		if(num == 3) {
+			if(boo1) {
+				s2.style.cssText = "width:14px;height:14px;background-color:red;"
+				s2.removeChild(s2.firstChild)
+			}	
+			if(boo2) {
+				s3.style.cssText = "width:14px;height:14px;background-color:green;"
+				s3.removeChild(s3.firstChild)
+			}
+
+			document.body.style.backgroundColor = "rgb(204,204,204)"
+
+			var second = document.getElementsByClassName("second")
+
+			for(var i = 0; i < second.length; ++i) {
+				second[i].firstChild.style.cssText += "background-color:#000"	
+			}
+		}
+	}
+</script>
+</html>
