@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax_demo2</title>
+	<style>
+		* {
+			margin: 0px;
+			padding:0px;
+			font-size: 15px;
+		}
+
+		body>div {
+			margin:0 auto;
+			padding:10px;
+			width:200px;
+		}
+
+		#show {
+			margin-top: 50px;
+		}
+		
+	</style>
+</head>
+<body>
+	<div>
+		<select id="choose" onchange="ajax_link(this.value)">
+			<option value="">请选择</option>
+			<option value="1">google</option>
+			<option value="2">taobao</option>
+			<option value="3">weibo</option>
+			<option value="4">facebook</option>
+		</select>
+		<div id = "show"><b></b></div>
+	</div>	
+</body>
+<script type="text/javascript">
+	var xhttp
+
+	function ajax_link (val) {
+		xhttp = GetXmlHttp()			
+		if(xhttp == null) {
+			alert('Broswer does not support XMLHttpRequest Object')
+			return
+		}
+
+		xhttp.onreadystatechange = statechange
+		xhttp.open('POST','ajax_demo2.php',true) 
+		xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded')
+		xhttp.send('val=' + val + '&sid=' + Math.random())
+	}
+
+	function statechange () {
+		if(xhttp.readyState == 4 && xhttp.status == 200) {
+			var show = document.getElementById('show')	
+			show.innerHTML = xhttp.responseText
+		}	
+	}
+
+	function GetXmlHttp () {
+		var xhttp = null
+
+		try {
+			xhttp = new XMLHttpRequest()
+		}catch(e) {
+			try {
+				xhttp = new ActiveXObject('Msxml2.XMLHTTP')
+			}catch(e) {
+				xhttp = new ActiveXObject('Microsoft.XMLHTTP')
+			}
+		}
+		return xhttp
+	}
+</script>
+</html>
