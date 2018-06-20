@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>opacity</title>
+	<style>
+		* {
+			margin:0px;
+			padding:0px;
+			font:12px/1.5 Tahoma;
+		}
+
+		body>div {
+			margin:10px auto;
+			width:700px;
+			padding:10px 0px 0px 10px;
+			border: 1px solid #000;
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		li {
+			border: 1px solid #ccc;
+			width: 128px;
+			margin:0px 10px 10px 0px;
+			float: left;
+		}
+
+		li img {
+			opacity: 0.3;
+			filter:alpha(opacity=30);
+			cursor: crosshair;
+		}
+
+		li img.current {
+			opacity: 1;
+			filter:alpha(opacity=100);
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+			<li><img src="img/5.jpg" alt=""></li>
+			<li><img src="img/6.jpg" alt=""></li>
+			<li><img src="img/7.jpg" alt=""></li>
+			<li><img src="img/8.jpg" alt=""></li>
+			<li><img src="img/9.jpg" alt=""></li>
+			<li><img src="img/10.jpg" alt=""></li>
+		</ul>
+		<div style="clear:both;"></div>
+	</div>	
+</body>
+<script type="text/javascript">
+	window.onload = function () {
+		let li = document.getElementsByTagName('li')
+		for (var i = 0; i < li.length; ++i) {
+			li[i].onmouseover = function () {
+				li[i].style.className = 'current'
+			}
+
+			li[i].onmouseout = function () {
+				li[i].style.className = ''
+			}
+		}
+	}
+</script>
+</html>
