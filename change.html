@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>changediv</title>
+	<style>
+		* {
+			margin:0px;
+			padding:0px;
+			font:12px/1.5 Tahoma;
+		}
+
+		body>div.first {
+			margin:10px auto;
+			width: 200px; 
+		}
+
+		body>div.first>p {
+			margin-bottom: 10px;
+		}
+
+		body>div.second {
+			margin: 10px auto;
+			padding: 10px;
+			background: #000;
+			width: 180px;
+			height: 180px;
+		}
+
+		div.second>p {
+			color:#fff;
+		}
+
+		button {
+			width: 40px;
+		}
+
+		input {
+			padding:3px;
+			border:1px solid #ccc;
+			color:#000;
+		}
+	</style>
+</head>
+<body>
+	<div class="first">
+		<p><span>属性名</span>&nbsp;:&nbsp;<input type="text" value="background"></p>
+		<p><span>属性值</span>&nbsp;:&nbsp;<input type="text" value="blue"></p>
+		<p><button>确定</button>&nbsp;&nbsp;<button>重置</button></p>
+	</div>	
+	<div class="second">
+		<p>在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果。</p>	
+	</div>
+</body>
+<script type="text/javascript">
+	var changeStyle = function (elem,name,val) {
+		elem.style[name] = val
+	}
+
+	window.onload = function () {
+
+		var bt1 = document.getElementsByTagName('button')[0]
+		var bt2 = document.getElementsByTagName('button')[1]
+		var div1 = document.getElementsByClassName('second')[0]
+		var input1 = document.getElementsByTagName('input')
+
+		bt1.onclick = function () {
+			changeStyle(div1,input1[0].value,input1[1].value)
+		}
+
+		bt2.onclick = function () {
+			div1.removeAttribute('style')	
+		}
+
+	}
+</script>
+</html>
