@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>simple_tabs</title>
+	<style>
+		* {
+			margin:0px;
+			padding:0px;
+			font:8px/1.5 Tahoma;
+		}
+
+		body>div {
+			margin:10px auto;
+			width: 450px;
+		}
+		ul#tab {
+			border: 1px solid #000;
+			background: #000;
+			overflow: hidden;
+			zoom:1;
+		}
+
+		ul#tab>li {
+			float: left;
+			height: 30px;
+			line-height: 30px;
+			padding:0 20px;
+			color:#fff;
+			list-style-type: none;
+		}
+
+		ul#tab>li:hover {
+			cursor:pointer;
+		}
+
+		div#content {
+			border: 1px solid #000;	
+			border-top-width: 0;
+		}
+
+		div#content>ul {
+			margin:0px 30px;
+			padding:10px 0px;
+			line-height: 25px;
+		}
+		
+		ul#tab>li.current {
+			background: #ccc;
+			color:#000;
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		<ul id="tab">
+			<li class="current">第一课</li>
+			<li>第二课</li>
+			<li>第三课</li>
+		</ul>	
+		<div id="content">
+			<ul>
+				<li>网页特效原理分析</li>
+				<li>响应用户操作</li>
+				<li>提示框效果</li>
+			</ul>
+			<ul style="display: none;">
+				<li>改变网页背景颜色</li>
+				<li>函数传参</li>
+				<li>高重用性函数的编写</li>
+			</ul>
+			<ul style="display: none;">
+				<li>JavaScript组成：ECMAScript、DOM、BOM，JavaScript兼容性来源</li>
+				<li>JavaScript出现的位置、优缺点</li>
+				<li>变量、类型、typeof、数据类型转换、变量作用域</li>
+			</ul>
+		</div>
+	</div>	
+</body>
+<script type="text/javascript">
+	window.onload = function () {
+		let li1 = document.getElementById('tab').getElementsByTagName('li')
+		let ul1 = document.getElementById('content').getElementsByTagName('ul')
+
+		for(var i = 0; i < li1.length; i++) {
+			li1[i].index = i
+			li1[i].onmouseover = function () {
+				for(var n = 0; n < li1.length; n++) {li1[n].className = ''}  
+				this.className = 'current'
+				for(var n = 0; n < li1.length; n++) {ul1[n].style.display = 'none'}  
+				ul1[this.index].style.display = 'block'
+			}
+		}
+	}	
+</script>
+</html>
