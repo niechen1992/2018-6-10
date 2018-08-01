@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>calendar</title>
+	<style>
+		* {
+			padding:0px;
+			margin:0px;
+		}
+
+		.outer {
+			width: 250px;
+			margin:10px auto;
+			background: rgb(234,234,234);
+			padding:0px 0px 10px 0px;
+		}	
+
+		ul {
+			text-decoration: none;
+			list-style: none;
+		}
+
+		li {
+			float:left;
+		}
+
+		.inner {
+			width: 38px;	
+			height: 38px;
+			background: rgb(66,66,66);
+			margin-top:10px;
+			margin-left:10px;
+			padding: 5px;
+			border:1px solid #ccc;
+		}
+
+		.current .p1 {
+			color:rgb(255,102,153);
+			font-size: 18px;
+			font-weight: bold;
+		}
+
+		.current .p2 {
+			color:rgb(255,102,153);
+			font-size: 14px;
+		}
+	
+		.p1 {
+			color:#fff;
+			font-weight: bold;
+			font-size: 18px;
+		}
+
+		.p2 {
+			color:#fff;
+			font-size: 14px;
+		}
+
+		.current {
+			width: 38px;	
+			height: 38px;
+			margin-top:10px;
+			margin-left:10px;
+			padding: 5px;	
+			border:1px solid #000;
+			background: #fff;
+		}
+
+		.content {
+			padding:5px 0px 5px 5px;
+			margin:10px 10px 0px 10px;
+			border:1px solid #fff;
+			background:rgb(234,234,234); 
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<ul>
+			<li>
+				<div class="inner">
+					<center><p class="p1">1</p></center>	
+					<center><p class="p2">JAN</p></center>	
+				</div>
+			</li>
+			<li>
+				<div class="inner">
+					<center><p class="p1">2</p></center>	
+					<center><p class="p2">FER</p></center>	
+				</div>
+			</li>
+			<li>
+				<div class="inner">
+					<center><p class="p1">3</p></center>	
+					<center><p class="p2">MAR</p></center>	
+				</div>
+			</li>
+			<li>
+				<div class="inner">
+					<center><p class="p1">4</p></center>	
+					<center><p class="p2">APR</p></center>	
+				</div>
+			</li>
+		</ul>	
+		<ul>
+			<li>
+				<div class="inner">
+					<center><p class="p1">5</p></center>	
+					<center><p class="p2">MAY</p></center>	
+				</div>
+			</li>
+			<li>
+				<div class="current">
+					<center><p class="p1">6</p></center>	
+					<center><p class="p2">JUN</p></center>	
+				</div>
+			</li>
+			<li>
+				<div class="inner">
+					<center><p class="p1">7</p></center>	
+					<center><p class="p2">JUL</p></center>	
+				</div>
+			</li>
+			<li>
+				<div class="inner">
+					<center><p class="p1">8</p></center>	
+					<center><p class="p2">AUG</p></center>	
+				</div>
+			</li>
+		</ul>	
+		<ul>
+			<li>
+				<div class="inner">
+					<center><p class="p1">9</p></center>	
+					<center><p class="p2">SEP</p></center>	
+				</div>
+			</li>
+			<li>
+				<div class="inner">
+					<center><p class="p1">10</p></center>	
+					<center><p class="p2">OCT</p></center>	
+				</div>
+			</li>
+			<li>
+				<div class="inner">
+					<center><p class="p1">11</p></center>	
+					<center><p class="p2">NOV</p></center>	
+				</div>
+			</li>
+			<li>
+				<div class="inner">
+					<center><p class="p1">12</p></center>	
+					<center><p class="p2">DEC</p></center>	
+				</div>
+			</li>
+		</ul>	
+		<div style="clear:both;"></div>
+		<div class="content">
+			<p style="font-weight:bold;color:rgb(102,102,102);line-height:19px;font-size:14px;"><strong>6</strong>月节日</p>	
+			<p style="color:rgb(102,102,102);line-height:19px;font-size:12px;">端午节：6月4日至6日放假3天。</p>
+		</div>
+	</div>	
+</body>
+<script type="text/javascript">
+	window.onload = function () {
+		var arr = ['元旦：1月1日至3日放假三天。','春节：2月2日至8日放假7天。','妇女节：3月8日妇女节，与我无关。','清明节：4月3日至5日放假3天','劳动节：4月30日至5月2日放假3天。','端午节：6月4日至6日放假3天。','小暑：7月7日小暑。不放假。','七夕节：8月6日七夕节。不放假。','中秋节：9月10日至12日放假3天。','国庆节：10月1日至7日放假7天。','立冬：11月8日立冬。不放假。','艾滋病日:12月1日<br>废除奴隶制国际日:12月2日。']
+
+		var cur = document.getElementsByClassName('current')[0]
+
+		var di = document.getElementsByClassName('outer')[0].getElementsByTagName('div')	
+
+		var str = document.getElementsByTagName('strong')[0]
+
+		var p = document.getElementsByClassName('content')[0].getElementsByTagName('p')[1]
+
+		for(var i = 0;i < di.length - 2; ++i) {
+			di[i].index = i
+			di[i].onmouseover = function () {
+				for(var j = 0; j < di.length - 2; ++j) {
+					di[j].className = 'inner'
+				}
+				this.className = 'current'
+				str.innerHTML = this.index + 1
+				p.innerHTML = arr[this.index]
+			}
+		}
+	}	
+</script>
+</html>
