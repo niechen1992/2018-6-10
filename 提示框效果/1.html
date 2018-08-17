@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		* {
+			margin:0px;
+			padding:0px;
+		}
+
+		html body {
+			font: 12px/1.5 Tahoma;
+		}
+		
+		.container {
+			margin:10px auto;
+			width:560px;
+			height:274px;
+			padding:0px 0px 0px 10px;
+			border:1px solid #000;
+		}
+		
+		h2 {
+			font-weight: bold;
+			text-align: center;
+			margin-top: 10px;
+			height: 30px;
+			line-height: 30px;
+		}
+		
+		ul {
+			text-decoration: none;
+			list-style: none;
+		}
+
+		li {
+			float:left;
+			border:1px solid #000;
+			width: 80px;
+			height: 80px;
+			margin-right: 10px;
+			margin-top: 10px;
+			background: rgb(240,240,240);
+			padding:10px 10px;
+			position: relative;
+		}
+
+		strong {
+			color:rgb(102,102,102);
+		}
+
+		p {
+			color:rgb(102,102,102);
+		}
+
+		img {
+			position: absolute;
+			top:-15px;
+			left:-15px;
+			border:2px solid #999;
+			z-index: 1;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2>名车车标展示-鼠标移过显示车标</h2>
+		<div class="inner">
+			<ul>
+				<li><strong>BMW</strong><p>宝马汽车</p><img src="img/1.jpg" alt=""></li>
+				<li><strong>Alfa Romeo</strong><p>阿尔法-罗米欧</p><img src="img/2.jpg" alt=""></li>
+				<li><strong>Skoda</strong><p>斯柯达</p><img src="img/3.jpg" alt=""></li>
+				<li><strong>Volkswagen</strong><p>大众汽车</p><img src="img/4.jpg" alt=""></li>
+				<li><strong>Saab</strong><p>萨布牌轿车</p><img src="img/5.jpg" alt=""></li>
+				<li><strong>Lamborghini</strong><p>兰博基尼</p><img src="img/6.jpg" alt=""></li>
+				<li><strong>Porsche</strong><p>保时捷</p><img src="img/7.jpg" alt=""></li>
+				<li><strong>Peugeot</strong><p>标致</p><img src="img/8.jpg" alt=""></li>
+				<li><strong>Mercedes1</strong><p>梅赛德斯 奔驰</p><img src="img/9.jpg" alt=""></li>
+				<li><strong>Buick</strong><p>别克汽车</p><img src="img/10.jpg" alt=""></li>
+			</ul>
+		</div>
+	</div>
+</body>
+<script>
+	var li = document.getElementsByTagName('li')
+	var img = document.getElementsByTagName('img')
+
+	for(var i = 0; i < li.length;++i) {
+		li[i].index = i
+		// img[i].index = i
+
+		$('li').eq(i).on('mouseover',function() {
+			var index1 = this.index
+			$('img').eq(index1).css('display','block')
+			$('img').eq(index1).css('cursor','crosshair')
+		})
+
+		$('img').eq(i).on('mouseover',function() {
+			$(this).css('display','block')
+			$(this).css('cursor','crosshair')
+		})
+
+		$('img').eq(i).on('mouseout',function() {
+			$(this).css('display','none')
+		})
+	}
+</script>
+</html>
