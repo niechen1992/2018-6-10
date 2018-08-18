@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>checkbox</title>
+	<style>
+		* {
+			margin:0px;
+			padding:0px;
+			font-family:Tahoma;
+			font-size:12px;
+		}
+
+		dl {
+			margin:10px auto;
+			padding:10px 5px;
+			width:120px;
+			border:1px solid rgb(102,102,102);
+			border-radius: 5px;
+		}
+
+		dt {
+			padding-bottom: 10px;
+			border-bottom:1px solid rgb(102,102,102);
+		}	
+
+		dt>input {
+			margin:3px 3px 3px 4px;
+			vertical-align: middle;
+		}
+
+		dt label {
+			font-weight: 700;	
+			margin:0px 10px 0px 5px;
+			vertical-align: middle;
+		}
+
+		dt a {
+			color:rgb(0,153,255);
+			text-decoration: none;
+			vertical-align: middle;
+		}
+
+		dt a:hover {
+			color:red;
+		}
+
+		dd {
+			margin-top:10px;
+		}
+
+		dd>input {
+			margin:3px 3px 3px 4px;
+			vertical-align: middle;
+		}
+
+		dd label {
+			font-weight: 500;	
+			margin:0px 10px 0px 5px;
+			vertical-align: middle;
+		}
+	</style>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+	<dl>
+		<dt>
+			<input type="checkbox" id="select"><label class="la">全选</label><a href="javascript:;" id="alink">反选</a>
+		</dt>	
+		<dd><input type="checkbox" class="check"><label>选项（一）</label></dd>
+		<dd><input type="checkbox" class="check"><label>选项（二）</label></dd>
+		<dd><input type="checkbox" class="check"><label>选项（三）</label></dd>
+		<dd><input type="checkbox" class="check"><label>选项（四）</label></dd>
+		<dd><input type="checkbox" class="check"><label>选项（五）</label></dd>
+		<dd><input type="checkbox" class="check"><label>选项（六）</label></dd>
+		<dd><input type="checkbox" class="check"><label>选项（七）</label></dd>
+		<dd><input type="checkbox" class="check"><label>选项（八）</label></dd>
+		<dd><input type="checkbox" class="check"><label>选项（九）</label></dd>
+		<dd><input type="checkbox" class="check"><label>选项（十）</label></dd>
+	</dl>	
+</body>
+<script type="text/javascript">
+	$('#select').on('click',function() {
+		var text = $('.la').text() 
+		console.log(text)	
+		if(text == "全选") {
+			var txt = "全不选"
+		}else {
+			txt = "全选"
+		}
+		
+		if(this.checked) {
+			$(':checkbox').prop('checked',true)
+			$('.la').text(txt)
+		}else {
+			$(':checkbox').prop('checked',false)
+			$('.la').text(txt)
+		}
+	})
+
+	$('#alink').on('click',function() {
+		$('.check:checkbox').each(function() {
+			var status = $(this).prop('checked')	
+			var now_status = !status
+			$(this).prop('checked',now_status)
+		})
+	})
+</script>
+</html>
