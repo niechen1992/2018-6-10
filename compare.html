@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入两个数字,比较大小</title>
+	<style>
+		* {
+			margin:0px;
+			padding:0px;
+		}
+
+		div {
+			margin:10px auto;
+			text-align: center;
+		}
+
+		.f {
+			width:50px;
+			padding:3px;
+			border:1px solid #ccc;
+			background: #f0f0f0;
+		}
+
+		.f+span {
+			margin:0px 10px;
+			font-size:12px;
+			font-weight:bold;
+		}
+
+		.f+input {
+			margin:0px 10px;
+			padding:2px 5px;
+			font-size:12px;
+		}
+
+		.f+input+span {
+			margin:0px;
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		<input class="f" type="text"><span>vs</span><input class="f" type="text"><input type="button" value="最大的数是>>"><span style="color:red;font-weight:bold;">?</span>
+	</div>	
+</body>
+<script type="text/javascript">
+	var f = document.getElementsByClassName('f')
+	var btn  = document.getElementsByTagName('input')[2]
+	var spa = document.getElementsByTagName('span')
+
+	function int(e) {
+		var e = e || window.event
+		var target = e.target || e.srcElement
+		this.value = target.value.replace(/[^\d]/,'')
+	}
+
+	function compare (e) {
+		var e = e || window.event	
+		var target = e.target || e.srcElement
+		if(f[0].value == '' || f[1].value == '') {
+			alert("请输入数字")
+			return
+		}
+		var first = parseInt(f[0].value)
+		var second = parseInt(f[1].value)
+
+		var result = (first > second) ? first : second
+
+		spa[1].innerHTML = result
+
+	}
+
+	for(var i = 0; i < f.length; ++i) {
+		f[i].addEventListener('keyup',int,false)
+	}
+
+	btn.addEventListener('click',compare,false)
+
+
+</script>
+</html>
