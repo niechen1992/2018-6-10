@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>typeof</title>
+	<style>
+		* {
+			margin:0px;
+			padding:0px;
+		}
+
+		div {
+			margin:10px auto;
+			text-align: center;
+		}
+
+		.f {
+			width:50px;
+			padding:3px;
+			border:1px solid #ccc;
+			background: #f0f0f0;
+		}
+
+		span {
+			color:green;
+			margin-right:10px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input class="f" type="text" size="5"> + <input class="f" type="text" size="5"> = <span>?</span><button>求和</button>
+	</div>	
+</body>
+<script type="text/javascript">
+	;(function () {
+		var inp = document.getElementsByTagName('input')
+		var btn = document.getElementsByTagName('button')
+		var spa = document.getElementsByTagName('span')
+
+		function isNum (e) {
+			var e = e || window.event
+            var target = e.target || e.srcElement
+            target.value = this.value.replace(/[^\d]/,"")
+		}
+
+		function sum () {
+			if(inp[0].value == '' || inp[1].value == '') {
+				alert("请输入数字")
+			}
+			spa[0].innerHTML = parseInt(inp[0].value) + parseInt(inp[1].value)
+		}
+
+		for(var i = 0; i < inp.length; ++i) {
+			inp[i].addEventListener('keyup',isNum,false)
+		}
+
+		btn[0].addEventListener('click',sum,false)
+
+	}
+	)()
+</script>
+</html>
