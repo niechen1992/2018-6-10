@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>increment</title>
+	<style>
+		* {
+			margin:0px;
+			padding:0px;
+		}
+
+		div {
+			margin:10px auto;
+			text-align: center;
+			font-size: 50px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<body>
+	<div>1</div>	
+</body>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var i = 1
+		setInterval(function() {++i;$('div').html(i);},1000)
+	})	
+</script>
+</html>
