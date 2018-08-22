@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Time</title>
+	<style>
+		* {
+			margin:0px;
+			padding:0px;
+		}
+
+		div {
+			margin:10px auto;
+			height:26px;
+			width:300px;
+			padding:22px 0px;
+			background: #000;
+			text-align: center;
+		}
+
+		input {
+			width: 40px;
+			padding:5px 0px;
+			/*margin:0px 0px 0px 10px;*/
+		}
+
+		.char {
+			color:#fff;
+			margin:0px 5px;
+		}
+
+		.s {
+			color:#000;
+			width:80px;	
+			border:2px solid #b4b4b4;
+			background: #fbfbfb;
+			margin:0px 10px;
+			padding:0px 10px;
+		}	
+
+	</style>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<body>
+	<div>
+		<span class="s"></span><span class="char">点</span><span class="s"></span><span class="char">分</span><span class="s"></span><span style="margin:0px 0px 0px 5px;" class="char">秒</span>
+	</div>	
+</body>
+<script>
+	$(document).ready(function () {
+		var s1 = $('.s')[0]
+		var s2 = $('.s')[1]
+		var s3 = $('.s')[2]
+
+		;(function () {
+			var date = new Date()
+			s1.innerHTML = date.getHours()
+			s2.innerHTML = date.getMinutes()
+			s3.innerHTML = date.getSeconds().toString().replace(/^(\d)$/,"0$1")	
+		})();
+
+		setInterval(function() {
+			var date = new Date()
+			s1.innerHTML = date.getHours()
+			s2.innerHTML = date.getMinutes()
+			s3.innerHTML = date.getSeconds().toString().replace(/^(\d)$/,"0$1")
+		},1000)
+	})
+</script>
+</html>
