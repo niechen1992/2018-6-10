@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>isTwoNum</title>
+	<style>
+		* {
+			margin:0px;
+			padding:0px;
+		}
+
+		div {
+			margin:10px auto;
+			text-align: center;
+		}
+
+		div>.f {
+			width:50px;
+			padding:3px;
+			border:1px solid #ccc;
+			background: #f0f0f0;
+		}
+
+		.g {
+			padding:0px 5px;
+			margin:0px 5px;
+		}
+	</style>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<body>
+	<div>
+		<input type="text" class="f"><input class="g" type="button" value="是否为两位数">
+	</div>	
+</body>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$('.f').on('keyup',function (e) {
+			var e = e || window.event
+			var target = e.target || e.srcElement
+
+			this.value = this.value.replace(/[^\d]/,'')
+		})	
+
+		$('.g').on('click',function (e) {
+			var e = e || window.event
+			var target = e.target || e.srcElement
+			var inp = $('.f').val()
+
+			if(inp == '') {
+				alert("请输入数字")
+				return
+			}
+
+			inp = inp.toString().length
+
+			alert("这是"+inp+"位数")
+		})	
+
+	})		
+</script>
+</html>
