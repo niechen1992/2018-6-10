@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>count_down</title>
+	<style>
+		* {
+			margin:0px;
+			padding:0px;
+		}
+
+		.out {
+			margin:10px auto;
+			padding:0px 10px;
+			width:280px;
+			height: 140px;
+			background: black;
+		}
+
+		.f {
+			width:80px;
+			height: 22px;
+			background: #fbfbfb;
+			border:2px solid #b4b4b4;
+			padding:0px 10px;
+			color:black;
+			/*margin-left:;*/
+		}
+
+		.in {
+			padding-top:20px;
+			text-align: center;
+		}
+
+		input {
+			width: 283px;
+			height:50px;
+			margin-top: 20px;
+			border:0px;
+			text-align: center;
+			cursor:pointer;
+			background: url(btn-1.png) no-repeat;
+		}
+			
+		input.cancel {
+			background-position: 0 -50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="out">
+		<div class="in">
+			<span class="f" style="margin-left:15px;">01</span><span style="color:white;margin:0px 10px 0px 10px;">分钟</span><span class="f">40</span><span style="color:white;margin:0px 10px 0px 10px;">秒</span>	
+		</div>	
+		<input type="button">
+	</div>	
+</body>
+<script type="text/javascript">
+	var btn = document.getElementsByTagName('input')[0]	
+	var i = null
+
+	function goo (e) {
+		var e = e || window.event
+		var target = e.target || e.srcElement
+		target.className == '' ?(i = setInterval(updata,1000),updata()):(clearInterval(i));
+		target.className = target.className == '' ? 'cancel':'';
+	}
+
+	function format (a) {
+		return a.toString().replace(/^(\d)$/,'0$1')
+	}
+
+	function updata () {
+		var spa = document.getElementsByClassName('f')
+		var remain = spa[0].innerHTML.replace(/^0/,'') * 60 + parseInt(spa[1].innerHTML.replace(/^0/,''))
+
+		if(remain <= 0) {
+			clearInterval(i)
+			return
+		}
+
+		remain--
+		spa[0].innerHTML = format(parseInt(remain / 60))
+		remain %= 60
+		spa[1].innerHTML = format(parseInt(remain))
+	}
+
+	btn.addEventListener('click',goo,false)	
+</script>
+</html>	
